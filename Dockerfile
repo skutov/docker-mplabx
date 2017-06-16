@@ -10,7 +10,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -yq --no-install-recommends curl libc6:i386 \
     libx11-6:i386 libxext6:i386 libstdc++6:i386 libexpat1:i386 \
     libxext6 libxrender1 libxtst6 libgtk2.0-0 libxslt1.1 \
-    git
+    git ssh
 
 ENV MPLABX_VERSION 3.55
 
