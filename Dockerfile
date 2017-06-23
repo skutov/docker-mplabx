@@ -22,6 +22,14 @@ RUN curl -fSL -A "Mozilla/4.0" -o /tmp/mplabx-installer.tar "http://ww1.microchi
         -- --unattendedmodeui none --mode unattended \
     && rm ./MPLABX-v${MPLABX_VERSION}-linux-installer.sh
 
+  # Download and install XC16 compiler
+  RUN curl -fSL -A "Mozilla/4.0" -o /tmp/xc16.run "http://www.microchip.com/mplabxc16linux" \
+      && chmod a+x /tmp/xc16.run \
+      && /tmp/xc16.run --mode unattended --unattendedmodeui none \
+          --netservername localhost --LicenseType FreeMode \
+      && rm /tmp/xc16.run
+  ENV PATH /opt/microchip/xc16/v1.31/bin:$PATH
+
 VOLUME ["/tmp/.X11-unix"]
 
 CMD ["/bin/bash"]
